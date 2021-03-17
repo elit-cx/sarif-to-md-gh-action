@@ -1,6 +1,3 @@
-
-
-
 const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
@@ -13,7 +10,8 @@ try {
   let rawdata = fs.readFileSync(sarifReportpath);
   let jsonSarif = JSON.parse(rawdata)
   //console.log(`get sarif data ${rawdata}`);
-  console.log(`repo details ${github.owner}, ${github.repo}, ${github.branch}`)
+  const context = github.context;
+  console.log(`repo details ${context.owner}, ${context.repo}, ${context.branch}`)
   const results = sariftToMd.sarifToMarkdown({
     owner: github.owner,
     repo: github.repo,
