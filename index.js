@@ -11,7 +11,8 @@ try {
   const sarifReportpath = core.getInput('sarifReport');
   console.log(`report file name ${sarifReportpath}`);
   let rawdata = fs.readFileSync(sarifReportpath);
-  console.log(`get sarif data ${rawdata}`);
+  //console.log(`get sarif data ${rawdata}`);
+  console.log(`repo details ${github.owner}, ${github.repo}, ${github.branch}`)
   const results = sariftToMd.sarifToMarkdown({
     owner: github.owner,
     repo: github.repo,
