@@ -1,0 +1,12 @@
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  sarifReport:  # id of input
+    description: 'the sarif report to convert'
+    required: true
+outputs:
+  mdFile: # id of output
+    description: 'The MD format of the sarif report'
+runs:
+  using: 'node12'
+  main: 'index.js'
