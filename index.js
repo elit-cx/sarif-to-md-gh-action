@@ -37,7 +37,7 @@ if (context.payload.pull_request == null) {
 }
 const pull_request_number = context.payload.pull_request.number;
 
-const octokit = new github.GitHub(github_token);
+const octokit = new github.getOctokit(github_token)
 const new_comment = octokit.issues.createComment({
     ...context.repo,
     issue_number: pull_request_number,
