@@ -4,6 +4,9 @@ inputs:
   sarifReport:  # id of input
     description: 'the sarif report to convert'
     required: true
+  token:  # id of input
+    description: 'github token'
+    required: true
 outputs:
   mdFile: # id of output
     description: 'The MD format of the sarif report'
