@@ -11,9 +11,9 @@ try {
   let jsonSarif = JSON.parse(rawdata)
   //console.log(`get sarif data ${rawdata}`);
   const context = github.context;
-  owner = context.repo.owner ?? ""
-  repo = context.repo.repo ?? ""
-  branch = context.repo.branch ?? ""
+  owner = context.repo.owner 
+  repo = context.repo.repo 
+  branch = ""
   console.log(`repo details ${context.repo.owner}, ${context.repo.repo}, ${context.repo.branch}`)
   const results = sariftToMd.sarifToMarkdown({
     owner: owner,
