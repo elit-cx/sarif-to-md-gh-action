@@ -11,13 +11,14 @@ try {
   const sarifReportpath = core.getInput('sarifReport');
   console.log(`report file name ${sarifReportpath}`);
   let rawdata = fs.readFileSync(sarifReportpath);
+  let jsonSarif = JSON.parse(rawdata)
   //console.log(`get sarif data ${rawdata}`);
   console.log(`repo details ${github.owner}, ${github.repo}, ${github.branch}`)
   const results = sariftToMd.sarifToMarkdown({
     owner: github.owner,
     repo: github.repo,
     branch: github.branch,
-    sourceRoot: ""
+    sourceRoot: jsonSarif
 })(JSON.parse(rawdata));
 const resultsHasMessage = results.filter(result => result.hasMessages);
     const body = resultsHasMessage.map(result => {
