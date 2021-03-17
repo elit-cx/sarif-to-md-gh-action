@@ -18,7 +18,11 @@ try {
     branch: github.branch,
     sourceRoot: ""
 })(JSON.parse(rawdata));
-console.log(`convert sarif data ${results}`);
+const resultsHasMessage = results.filter(result => result.hasMessages);
+    const body = resultsHasMessage.map(result => {
+        return result.body;
+    }).join("\n\n");
+console.log(`convert sarif data ${body}`);
   const time = (new Date()).toTimeString();
   core.setOutput("mdFile", results);
   // Get the JSON webhook payload for the event that triggered the workflow
