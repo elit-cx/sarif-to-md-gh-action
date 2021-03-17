@@ -7,8 +7,8 @@ const fs = require('fs');
 const sariftToMd = require('@security-alert/sarif-to-markdown')
 
 try {
-  // `who-to-greet` input defined in action metadata file
   const sarifReportpath = core.getInput('sarifReport');
+  //const sarifReportpath = 'sample.json';
   console.log(`report file name ${sarifReportpath}`);
   let rawdata = fs.readFileSync(sarifReportpath);
   let jsonSarif = JSON.parse(rawdata)
@@ -18,8 +18,14 @@ try {
     owner: github.owner,
     repo: github.repo,
     branch: github.branch,
-    sourceRoot: jsonSarif
-})(JSON.parse(rawdata));
+    sourceRoot: ""
+})(jsonSarif);
+/*const results = sariftToMd.sarifToMarkdown({
+    owner: 'eli',
+    repo: 'test',
+    branch: 'master',
+    sourceRoot: ""
+})(jsonSarif);*/
 const resultsHasMessage = results.filter(result => result.hasMessages);
     const body = resultsHasMessage.map(result => {
         return result.body;

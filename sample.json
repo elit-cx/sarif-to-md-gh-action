@@ -1,0 +1,3999 @@
+{
+	"$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+	"version": "2.1.0",
+	"runs": [
+		{
+			"tool": {
+				"driver": {
+					"name": "KICS",
+					"version": "nightly-",
+					"fullName": "Keeping Infrastructure as Code Secure",
+					"informationUri": "https://www.kics.io/",
+					"rules": [
+						{
+							"id": "dfa20ffa-f476-428f-a490-424b41e91c7f",
+							"name": "Check Secret Expiration Is Set",
+							"shortDescription": {
+								"text": "Check Secret Expiration Is Set"
+							},
+							"fullDescription": {
+								"text": "Make sure that for all secrets the expiration date is set"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 12,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "73e42469-3a86-4f39-ad78-098f325b4e9f",
+							"name": "SSL Connection Is Enabled",
+							"shortDescription": {
+								"text": "SSL Connection Is Enabled"
+							},
+							"fullDescription": {
+								"text": "Make sure that for MySQL Database Server, 'Enforce SSL connection' is enabled"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_server",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "5400f379-a347-4bdd-a032-446465fdcc6f",
+							"name": "Trusted Microsoft Services Not Enabled",
+							"shortDescription": {
+								"text": "Trusted Microsoft Services Not Enabled"
+							},
+							"fullDescription": {
+								"text": "Trusted MIcrosoft Services are not enabled for Storage Account access"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#bypass",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "73fb21a1-b19a-45b1-b648-b47b1678681e",
+							"name": "Client Certificate is Disabled",
+							"shortDescription": {
+								"text": "Client Certificate is Disabled"
+							},
+							"fullDescription": {
+								"text": "Kubernetes Clusters must be created with Client Certificate enabled, which means 'master_auth' must have 'client_certificate_config' with the attribute 'issue_client_certificate' equal to true"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "5baa92d2-d8ee-4c75-88a4-52d9d8bb8067",
+							"name": "Legacy Authorization is Enabled",
+							"shortDescription": {
+								"text": "Legacy Authorization is Enabled"
+							},
+							"fullDescription": {
+								"text": "Kubernetes Engine Clusters must have Legacy Authorization set to disabled, which means the attribute 'enable_legacy_abac' must not be true"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "b03a748a-542d-44f4-bb86-9199ab4fd2d5",
+							"name": "Healthcheck Instruction Missing",
+							"shortDescription": {
+								"text": "Healthcheck Instruction Missing"
+							},
+							"fullDescription": {
+								"text": "Ensure that HEALTHCHECK is being used. The HEALTHCHECK instruction tells Docker how to test a container to check that it is still working"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://docs.docker.com/engine/reference/builder/#healthcheck",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "9630336b-3fed-4096-8173-b9afdfe346a7",
+							"name": "Image is not scanned",
+							"shortDescription": {
+								"text": "Image is not scanned"
+							},
+							"fullDescription": {
+								"text": "Checks if the Image has been scanned"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository#scan_on_push",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "2b3c671f-1b76-4741-8789-ed1fe0785dc4",
+							"name": "PostgreSQL Server Without Connection Throttling",
+							"shortDescription": {
+								"text": "PostgreSQL Server Without Connection Throttling"
+							},
+							"fullDescription": {
+								"text": "Ensure that Connection Throttling is set for the PostgreSQL server"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_configuration",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "acfdbec6-4a17-471f-b412-169d77553332",
+							"name": "Google Container Node Pool Auto Repair is Disabled",
+							"shortDescription": {
+								"text": "Google Container Node Pool Auto Repair is Disabled"
+							},
+							"fullDescription": {
+								"text": "Verifies if Google Conatiner Node Pool Auto Repair is Enabled"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_node_pool",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "b139213e-7d24-49c2-8025-c18faa21ecaa",
+							"name": "Node Auto Upgrade Not Enabled",
+							"shortDescription": {
+								"text": "Node Auto Upgrade Not Enabled"
+							},
+							"fullDescription": {
+								"text": "Node 'auto_upgrade' should be enabled for Kubernetes Clusters"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_node_pool#auto_upgrade",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "30e8dfd2-3591-4d19-8d11-79e93106c93d",
+							"name": "Stackdriver Monitoring is Disabled",
+							"shortDescription": {
+								"text": "Stackdriver Monitoring is Disabled"
+							},
+							"fullDescription": {
+								"text": "Kubernetes Engine Clusters must have Stackdriver Monitoring enabled, which means the attribute 'monitoring_service' must be defined and different than 'none'"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "fd54f200-402c-4333-a5a4-36ef6709af2f",
+							"name": "Missing User Instruction",
+							"shortDescription": {
+								"text": "Missing User Instruction"
+							},
+							"fullDescription": {
+								"text": "A user should be specified in the dockerfile, otherwise the image will run as root"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://docs.docker.com/engine/reference/builder/#user",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT005",
+										"index": 2,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "3790d386-be81-4dcf-9850-eaa7df6c10d9",
+							"name": "PostgreSQL Logs Checkpoints Is On",
+							"shortDescription": {
+								"text": "PostgreSQL Logs Checkpoints Is On"
+							},
+							"fullDescription": {
+								"text": "Make sure that for Postgre SQL Database Server, parameter 'log_checkpoints' is set to 'ON'"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_configuration",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "819d50fd-1cdf-45c3-9936-be408aaad93e",
+							"name": "Security Center Pricing Tier Is Not Standard",
+							"shortDescription": {
+								"text": "Security Center Pricing Tier Is Not Standard"
+							},
+							"fullDescription": {
+								"text": "Make sure that the 'Standard' pricing tiers were selected."
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://docs.bridgecrew.io/docs/ensure-standard-pricing-tier-is-selected",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "70cdf849-b7d9-4569-b87d-5d82ffd44719",
+							"name": "GKE Basic Authentication is Enabled",
+							"shortDescription": {
+								"text": "GKE Basic Authentication is Enabled"
+							},
+							"fullDescription": {
+								"text": "GCP - Google Kubernetes Engine (GKE) Basic Authentication must be disabled, which means the username and password provided in the master_auth block must be empty"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "3e4d5ce6-3280-4027-8010-c26eeea1ec01",
+							"name": "Project-wide SSH Keys Are Enabled In VM Instances",
+							"shortDescription": {
+								"text": "Project-wide SSH Keys Are Enabled In VM Instances"
+							},
+							"fullDescription": {
+								"text": "Check if SSH keys are enabled project-wide in VM instances"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "b1d51728-7270-4991-ac2f-fc26e2695b38",
+							"name": "VM CSEK Encryption Is Disabled",
+							"shortDescription": {
+								"text": "VM CSEK Encryption Is Disabled"
+							},
+							"fullDescription": {
+								"text": "VM disks for critical VMs must be encrypted with Customer Supplied Encryption Keys (CSEK), which means the attribute 'disk_encryption_key' must be defined and its sub attribute 'sha256' must also be defined and not empty"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "568a4d22-3517-44a6-a7ad-6a7eed88722c",
+							"name": "S3 Bucket Without Versioning",
+							"shortDescription": {
+								"text": "S3 Bucket Without Versioning"
+							},
+							"fullDescription": {
+								"text": "S3 bucket without versioning"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#versioning",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "b187edca-b81e-4fdc-aff4-aab57db45edb",
+							"name": "Cloud SQL DB Is Publicly Accessible",
+							"shortDescription": {
+								"text": "Cloud SQL DB Is Publicly Accessible"
+							},
+							"fullDescription": {
+								"text": "Check if any Cloud SQL instances are publicly accessible."
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "8a893e46-e267-485a-8690-51f39951de58",
+							"name": "COS Node Image Not Used",
+							"shortDescription": {
+								"text": "COS Node Image Not Used"
+							},
+							"fullDescription": {
+								"text": "A node image, that is not Container-Optimized OS (COS), is used for Kubernetes Engine Clusters Node image"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_node_pool#node_config",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "4d080822-5ee2-49a4-8984-68f3d4c890fc",
+							"name": "Check Key Expiration Is Set",
+							"shortDescription": {
+								"text": "Check Key Expiration Is Set"
+							},
+							"fullDescription": {
+								"text": "Make sure that for all keys the expiration date is set"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_key",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 12,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "08bd0760-8752-44e1-9779-7bb369b2b4e4",
+							"name": "DB Instance Storage Not Encrypted",
+							"shortDescription": {
+								"text": "DB Instance Storage Not Encrypted"
+							},
+							"fullDescription": {
+								"text": "The parameter storage_encrypted in aws_db_instance must be true (the default is false)"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#storage_encrypted",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "cc997676-481b-4e93-aa81-d19f8c5e9b12",
+							"name": "EBS Volume Clusters Not Encrypted",
+							"shortDescription": {
+								"text": "EBS Volume Clusters Not Encrypted"
+							},
+							"fullDescription": {
+								"text": "The value on AWS EBS Volume Cluster Encryption must be true"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ebs_volume#encrypted",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "7081f85c-b94d-40fd-8b45-a4f1cac75e46",
+							"name": "IAM Access Key Is Exposed",
+							"shortDescription": {
+								"text": "IAM Access Key Is Exposed"
+							},
+							"fullDescription": {
+								"text": "Check if IAM Access Key is active for some user besides 'root'"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "24e16922-4330-4e9d-be8a-caa90299466a",
+							"name": "ElasticSearch Not Encrypted At Rest",
+							"shortDescription": {
+								"text": "ElasticSearch Not Encrypted At Rest"
+							},
+							"fullDescription": {
+								"text": "Check if ElasticSearch encryption is disabled at Rest"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "575a2155-6af1-4026-b1af-d5bc8fe2a904",
+							"name": "IAM Policy Allows All ('*') In Policy Statement",
+							"shortDescription": {
+								"text": "IAM Policy Allows All ('*') In Policy Statement"
+							},
+							"fullDescription": {
+								"text": "IAM policies allow all ('*') in a statement action"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 8,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "c606ba1d-d736-43eb-ac24-e16108f3a9e0",
+							"name": "IP Aliasing is Disabled",
+							"shortDescription": {
+								"text": "IP Aliasing is Disabled"
+							},
+							"fullDescription": {
+								"text": "Kubernetes Clusters must be created with Alias IP ranges enabled, which means the attribut 'ip_allocation_policy' must be defined and, if defined, the attribute 'networking_mode' must be VPC_NATIVE "
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "0437633b-daa6-4bbc-8526-c0d2443b946e",
+							"name": "SSL Enforce Is Disabled",
+							"shortDescription": {
+								"text": "SSL Enforce Is Disabled"
+							},
+							"fullDescription": {
+								"text": "Make sure that for PosgreSQL, the 'Enforce SSL connection' is set to 'ENABLED'"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_server",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "a6cd52a1-3056-4910-96a5-894de9f3f3b3",
+							"name": "Cloud Storage Anonymous or Publicly Accessible",
+							"shortDescription": {
+								"text": "Cloud Storage Anonymous or Publicly Accessible"
+							},
+							"fullDescription": {
+								"text": "Cloud Storage Buckets must not be anonymously or publicly accessible, which means the attribute 'members' must not possess 'allUsers' or 'allAuthenticatedUsers'"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam#google_storage_bucket_iam_binding",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 8,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "1baba08e-3c8a-4be7-95eb-dced5833de21",
+							"name": "Master Authentication is Disabled",
+							"shortDescription": {
+								"text": "Master Authentication is Disabled"
+							},
+							"fullDescription": {
+								"text": "Kubernetes Engine Clusters must have Master Authentication set to enabled, which means the attribute 'master_auth' must have the subattributes 'username' and 'password' defined and not empty"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 8,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "6ccb85d7-0420-4907-9380-50313f80946b",
+							"name": "Private Cluster Is Disabled",
+							"shortDescription": {
+								"text": "Private Cluster Is Disabled"
+							},
+							"fullDescription": {
+								"text": "Kubernetes Clusters must be created with Private Clusters enabled, meaning the 'private_cluster_config' must be defined and the attributes 'enable_private_nodes' and 'enable_private_endpoint' must be true"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "3cb4af0b-056d-4fb1-8b95-fdc4593625ff",
+							"name": "Using Default Service Account",
+							"shortDescription": {
+								"text": "Using Default Service Account"
+							},
+							"fullDescription": {
+								"text": "Instances must not be configured to use the Default Service Account, that has full access to all Cloud APIs, which means the attribute 'service_account' and its sub attribute 'email' must be defined. Additionally, 'email' must not be empty and must also not be a default Google Compute Engine service account."
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "4728cd65-a20c-49da-8b31-9c08b423e4db",
+							"name": "Fully Open Ingress",
+							"shortDescription": {
+								"text": "Fully Open Ingress"
+							},
+							"fullDescription": {
+								"text": "Security groups allow ingress from 0.0.0.0:0"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://www.terraform.io/docs/providers/aws/r/security_group.html",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "1dc73fb4-5b51-430c-8c5f-25dcf9090b02",
+							"name": "RDS Without Backup",
+							"shortDescription": {
+								"text": "RDS Without Backup"
+							},
+							"fullDescription": {
+								"text": "RDS configured without backup"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT003",
+										"index": 10,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+							"name": "S3 Bucket Without Encryption",
+							"shortDescription": {
+								"text": "S3 Bucket Without Encryption"
+							},
+							"fullDescription": {
+								"text": "S3 bucket should have encryption defined"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "ffac8a12-322e-42c1-b9b9-81ff85c39ef7",
+							"name": "HTTP Port Open",
+							"shortDescription": {
+								"text": "HTTP Port Open"
+							},
+							"fullDescription": {
+								"text": "HTTP port is open to the internet"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "cf3c7631-cd1e-42f3-8801-a561214a6e79",
+							"name": "SQL Database Backup Configuration Disabled",
+							"shortDescription": {
+								"text": "SQL Database Backup Configuration Disabled"
+							},
+							"fullDescription": {
+								"text": "Checks if backup configuration is enabled for all Cloud SQL Database instances"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT003",
+										"index": 10,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "e576ce44-dd03-4022-a8c0-3906acca2ab4",
+							"name": "BigQuery Dataset Is Public",
+							"shortDescription": {
+								"text": "BigQuery Dataset Is Public"
+							},
+							"fullDescription": {
+								"text": "BigQuery dataset is anonymously or publicly accessible"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://www.terraform.io/docs/providers/google/r/bigquery_dataset.html",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 8,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "35113e6f-2c6b-414d-beec-7a9482d3b2d1",
+							"name": "DB Instance Publicly Accessible",
+							"shortDescription": {
+								"text": "DB Instance Publicly Accessible"
+							},
+							"fullDescription": {
+								"text": "The feature Publicly Accessible must be false"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#publicly_accessible",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+							"name": "S3 Bucket Without Enabled MFA Delete",
+							"shortDescription": {
+								"text": "S3 Bucket Without Enabled MFA Delete"
+							},
+							"fullDescription": {
+								"text": "S3 bucket without enabled MFA Delete"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#mfa_delete",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "12944ec4-1fa0-47be-8b17-42a034f937c2",
+							"name": "Storage Account Not Forcing HTTPS",
+							"shortDescription": {
+								"text": "Storage Account Not Forcing HTTPS"
+							},
+							"fullDescription": {
+								"text": "See that Storage Accounts forces the use of HTTPS"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "d0b4d550-c001-46c3-bbdb-d5d75d33f05f",
+							"name": "OSLogin Is Disabled For VM Instance",
+							"shortDescription": {
+								"text": "OSLogin Is Disabled For VM Instance"
+							},
+							"fullDescription": {
+								"text": "Check if any VM instance disables OSLogin"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "c4dcdcdf-10dd-4bf4-b4a0-8f6239e6aaa0",
+							"name": "SSH Access Is Not Restricted From The Internet",
+							"shortDescription": {
+								"text": "SSH Access Is Not Restricted From The Internet"
+							},
+							"fullDescription": {
+								"text": "Check if Google Firewall allows SSH access (port 22) from the Internet (public CIDR block)"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "9db38e87-f6aa-4b5e-a1ec-7266df259409",
+							"name": "Email Alerts Are Disabled",
+							"shortDescription": {
+								"text": "Email Alerts Are Disabled"
+							},
+							"fullDescription": {
+								"text": "Make sure that alerts notifications are set to 'On' in the Azure Security Center Contact"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_contact",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "a99130ab-4c0e-43aa-97f8-78d4fcb30024",
+							"name": "Ensure Encryption on Disk",
+							"shortDescription": {
+								"text": "Ensure Encryption on Disk"
+							},
+							"fullDescription": {
+								"text": "Ensure that the encryption is active on the disk"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/managed_disk#encryption_settings",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "e7e961ac-d17e-4413-84bc-8a1fbe242944",
+							"name": "Object Versioning Not Enabled",
+							"shortDescription": {
+								"text": "Object Versioning Not Enabled"
+							},
+							"fullDescription": {
+								"text": "Object Versioning Not Enabled on Cloud Storage Bucket"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket#enabled",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "b90842e5-6779-44d4-9760-972f4c03ba1c",
+							"name": "Network Watcher Flow Disabled",
+							"shortDescription": {
+								"text": "Network Watcher Flow Disabled"
+							},
+							"fullDescription": {
+								"text": "Check if enable field in the resource azurerm_network_watcher_flow_log is false."
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_watcher_flow_log",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "38c71c00-c177-4cd7-8d36-cd1007cdb190",
+							"name": "Vault with disabled Audit",
+							"shortDescription": {
+								"text": "Vault with disabled Audit"
+							},
+							"fullDescription": {
+								"text": "Ensure that logging for Azure KeyVault is 'Enabled'"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://www.terraform.io/docs/providers/azurerm/r/key_vault.html",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "97fa667a-d05b-4f16-9071-58b939f34751",
+							"name": "Serial Ports Are Enabled For VM Instances",
+							"shortDescription": {
+								"text": "Serial Ports Are Enabled For VM Instances"
+							},
+							"fullDescription": {
+								"text": "Check if VM instance enables serial ports"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "e6b4b943-6883-47a9-9739-7ada9568f8ca",
+							"name": "EBS Volume Snapshot Not Encrypted",
+							"shortDescription": {
+								"text": "EBS Volume Snapshot Not Encrypted"
+							},
+							"fullDescription": {
+								"text": "The value on AWS EBS Volume Snapshot Encryptation must be true"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ebs_snapshot#encrypted",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "ad03cb46-f174-4674-bf8e-2880a7000edd",
+							"name": "S3 Bucket Rules With Master Key Id Null",
+							"shortDescription": {
+								"text": "S3 Bucket Rules With Master Key Id Null"
+							},
+							"fullDescription": {
+								"text": "If algorithm is AES256 then the master key is null, empty or undefined, otherwise the master key is required"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#sse_algorithm",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 12,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "65905cec-d691-4320-b320-2000436cb696",
+							"name": "'SSH' (TCP:22) in Public Scope",
+							"shortDescription": {
+								"text": "'SSH' (TCP:22) in Public Scope"
+							},
+							"fullDescription": {
+								"text": "SSH' (TCP:22) should not be public in AWS Security Group"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "88fd05e0-ac0e-43d2-ba6d-fc0ba60ae1a6",
+							"name": "IAM Database Auth Not Enabled",
+							"shortDescription": {
+								"text": "IAM Database Auth Not Enabled"
+							},
+							"fullDescription": {
+								"text": "IAM Database Auth Enabled must be configured to true"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#iam_database_authentication_enabled",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "1402afd8-a95c-4e84-8b0b-6fb43758e6ce",
+							"name": "Lambda Hardcoded AWS Access Key",
+							"shortDescription": {
+								"text": "Lambda Hardcoded AWS Access Key"
+							},
+							"fullDescription": {
+								"text": "Lambda hardcoded AWS access/secret keys"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 12,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "02474449-71aa-40a1-87ae-e14497747b00",
+							"name": "Cloud SQL Instance With SSL Disabled",
+							"shortDescription": {
+								"text": "Cloud SQL Instance With SSL Disabled"
+							},
+							"fullDescription": {
+								"text": "Cloud SQL Database Instance with SSL disabled for incoming connections"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#require_ssl",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "f7e296b0-6660-4bc5-8f87-22ac4a815edf",
+							"name": "SQL Server Auditing Is Enabled",
+							"shortDescription": {
+								"text": "SQL Server Auditing Is Enabled"
+							},
+							"fullDescription": {
+								"text": "Make sure that for SQL Servers, 'Auditing' is set to 'On'"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sql_server",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "11e7550e-c4b6-472e-adff-c698f157cdd7",
+							"name": "Network Policy is Disabled",
+							"shortDescription": {
+								"text": "Network Policy is Disabled"
+							},
+							"fullDescription": {
+								"text": "Kubernetes Engine Clusters must have Network Policy enabled, meaning that the attribute 'network_policy.enabled' must be true and the attribute 'addons_config.network_policy_config.disabled' must be false "
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "9192e0f9-eca5-4056-9282-ae2a736a4088",
+							"name": "Pod Security Policy is Disabled",
+							"shortDescription": {
+								"text": "Pod Security Policy is Disabled"
+							},
+							"fullDescription": {
+								"text": "Kubernetes Clusters must have Pod Security Policy controller enabled, which means there must be a 'pod_security_policy_config' with the 'enabled' attribute equal to true"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "4c7ebcb2-eae2-461e-bc83-456ee2d4f694",
+							"name": "Stackdriver Logging is Disabled",
+							"shortDescription": {
+								"text": "Stackdriver Logging is Disabled"
+							},
+							"fullDescription": {
+								"text": "Kubernetes Engine Clusters must have Stackdriver Logging enabled, which means the attribute 'logging_service' must be defined and different from 'none'"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "a3a055d2-9a2e-4cc9-b9fb-12850a1a3a4b",
+							"name": "AD Admin Not Configured For SQL Server",
+							"shortDescription": {
+								"text": "AD Admin Not Configured For SQL Server"
+							},
+							"fullDescription": {
+								"text": "The Active Directory Administrator is not configured for a SQL server"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sql_active_directory_administrator",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "8b042c30-e441-453f-b162-7696982ebc58",
+							"name": "Geo Redundancy Is Disabled",
+							"shortDescription": {
+								"text": "Geo Redundancy Is Disabled"
+							},
+							"fullDescription": {
+								"text": "Make sure that on PostgreSQL Geo Redundant Backups is enabled"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_server",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT003",
+										"index": 10,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "7750fcca-dd03-4d38-b663-4b70289bcfd4",
+							"name": "Log Retention Is Greater Than 90 Days",
+							"shortDescription": {
+								"text": "Log Retention Is Greater Than 90 Days"
+							},
+							"fullDescription": {
+								"text": "Flow logs enable capturing information about IP traffic flowing in and out of the network security groups. Network Security Group Flow Logs must be enabled with retention period greater than or equal to 90 days. This is important, because these logs are used to check for anomalies and give information of suspected breaches"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_watcher_flow_log",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "f5342045-b935-402d-adf1-8dbbd09c0eef",
+							"name": "AKS Network Policy Misconfigured",
+							"shortDescription": {
+								"text": "AKS Network Policy Misconfigured"
+							},
+							"fullDescription": {
+								"text": "Check if the Azure Kubernetes Service doesn't have the proper network policy configuration."
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/kubernetes_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "d6cabc3a-d57e-48c2-b341-bf3dd4f4a120",
+							"name": "Cloud Storage Bucket Logging Not Enabled",
+							"shortDescription": {
+								"text": "Cloud Storage Bucket Logging Not Enabled"
+							},
+							"fullDescription": {
+								"text": "Cloud storage bucket with logging not enabled"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket#log_bucket",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "bb0db090-5509-4853-a827-75ced0b3caa0",
+							"name": "Google Storage Bucket Level Access is Enabled",
+							"shortDescription": {
+								"text": "Google Storage Bucket Level Access is Enabled"
+							},
+							"fullDescription": {
+								"text": "Validates if the Google Storage Bucket Level Access is Enabled"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "f996f3cb-00fc-480c-8973-8ab04d44a8cc",
+							"name": "Passwords And Secrets In Infrastructure Code",
+							"shortDescription": {
+								"text": "Passwords And Secrets In Infrastructure Code"
+							},
+							"fullDescription": {
+								"text": "Query to find passwords and secrets in infrastructure code."
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://kics.io/",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 12,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "98d59056-f745-4ef5-8613-32bca8d40b7e",
+							"name": "Neptune Cluster Not Encrypted",
+							"shortDescription": {
+								"text": "Neptune Cluster Not Encrypted"
+							},
+							"fullDescription": {
+								"text": "Check if Neptune Cluster Storage is securely encrypted"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster#storage_encrypted",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "61c3cb8b-0715-47e4-b788-86dde40dd2db",
+							"name": "Kube Dashboard Is Enabled",
+							"shortDescription": {
+								"text": "Kube Dashboard Is Enabled"
+							},
+							"fullDescription": {
+								"text": "Check if the Kubernetes Dashboard is enabled."
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "bb2d6cbc-b3af-4da7-9b1c-d91652dd9ead",
+							"name": "Logging Disabled For Key Vault",
+							"shortDescription": {
+								"text": "Logging Disabled For Key Vault"
+							},
+							"fullDescription": {
+								"text": "Logging for Azure Key Vault is disabled"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_diagnostic_setting",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 12,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "65c1bc7a-4835-4ac4-a2b6-13d310b0648d",
+							"name": "Cluster Labels are Disabled",
+							"shortDescription": {
+								"text": "Cluster Labels are Disabled"
+							},
+							"fullDescription": {
+								"text": "Kubernetes Clusters must be configured with labels, which means the attribute 'resource_labels' must be defined"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "40430747-442d-450a-a34f-dc57149f4609",
+							"name": "Google Compute Subnetwork Logs are Disabled",
+							"shortDescription": {
+								"text": "Google Compute Subnetwork Logs are Disabled"
+							},
+							"fullDescription": {
+								"text": "This query checks if logs are enabled for google compute subnetwork"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "678fd659-96f2-454a-a2a0-c2571f83a4a3",
+							"name": "RDP Access Is Not Restricted",
+							"shortDescription": {
+								"text": "RDP Access Is Not Restricted"
+							},
+							"fullDescription": {
+								"text": "Check if Google Firewall ingress allows RDP access (port 3389)"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "d7b9d850-3e06-4a75-852f-c46c2e92240b",
+							"name": "Hardcoded AWS access key",
+							"shortDescription": {
+								"text": "Hardcoded AWS access key"
+							},
+							"fullDescription": {
+								"text": "Hard-coded AWS access key / secret key exists in EC2 user data"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 12,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "38c5ee0d-7f22-4260-ab72-5073048df100",
+							"name": "S3 Bucket With Public RW Access",
+							"shortDescription": {
+								"text": "S3 Bucket With Public RW Access"
+							},
+							"fullDescription": {
+								"text": "S3 bucket with public READ/WRITE access"
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#mfa_delete",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 8,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+							"name": "S3 Bucket Without Logging",
+							"shortDescription": {
+								"text": "S3 Bucket Without Logging"
+							},
+							"fullDescription": {
+								"text": "S3 bucket without logging"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			"results": [
+				{
+					"ruleId": "dfa20ffa-f476-428f-a490-424b41e91c7f",
+					"ruleIndex": 0,
+					"kind": "fail",
+					"message": {
+						"text": "'expiration_date' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/key_vault.tf"
+								},
+								"region": {
+									"startLine": 39
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "73e42469-3a86-4f39-ad78-098f325b4e9f",
+					"ruleIndex": 1,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_mysql_server.example.ssl_enforcement_enabled' is equal 'false'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/sql.tf"
+								},
+								"region": {
+									"startLine": 51
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "5400f379-a347-4bdd-a032-446465fdcc6f",
+					"ruleIndex": 2,
+					"kind": "fail",
+					"message": {
+						"text": "'network_rules' is not defined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/storage.tf"
+								},
+								"region": {
+									"startLine": 13
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "5400f379-a347-4bdd-a032-446465fdcc6f",
+					"ruleIndex": 2,
+					"kind": "fail",
+					"message": {
+						"text": "'bypass' does not contain 'AzureServices'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/storage.tf"
+								},
+								"region": {
+									"startLine": 48
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "73fb21a1-b19a-45b1-b648-b47b1678681e",
+					"ruleIndex": 3,
+					"kind": "fail",
+					"message": {
+						"text": "Attribute 'master_auth' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "5baa92d2-d8ee-4c75-88a4-52d9d8bb8067",
+					"ruleIndex": 4,
+					"kind": "fail",
+					"message": {
+						"text": "Attribute 'enable_legacy_abac' is true"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 12
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "b03a748a-542d-44f4-bb86-9199ab4fd2d5",
+					"ruleIndex": 5,
+					"kind": "fail",
+					"message": {
+						"text": "Dockerfile doesn't contain instruction 'HEALTHCHECK'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/resources/Dockerfile"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "9630336b-3fed-4096-8173-b9afdfe346a7",
+					"ruleIndex": 6,
+					"kind": "fail",
+					"message": {
+						"text": "aws_ecr_repository[repository].image_scanning_configuration is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/ecr.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "2b3c671f-1b76-4741-8789-ed1fe0785dc4",
+					"ruleIndex": 7,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_postgresql_configuration.thrtottling_config.value' is 'OFF'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/sql.tf"
+								},
+								"region": {
+									"startLine": 73
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "acfdbec6-4a17-471f-b412-169d77553332",
+					"ruleIndex": 8,
+					"kind": "fail",
+					"message": {
+						"text": "google_container_node_pool[custom_node_pool].management.auto_repair is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 24
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "b139213e-7d24-49c2-8025-c18faa21ecaa",
+					"ruleIndex": 9,
+					"kind": "fail",
+					"message": {
+						"text": "google_container_node_pool.management is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 24
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "30e8dfd2-3591-4d19-8d11-79e93106c93d",
+					"ruleIndex": 10,
+					"kind": "fail",
+					"message": {
+						"text": "Attribute 'monitoring_service' is 'none'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "fd54f200-402c-4333-a5a4-36ef6709af2f",
+					"ruleIndex": 11,
+					"kind": "fail",
+					"message": {
+						"text": "The 'Dockerfile' does not contain any 'USER' instruction"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/resources/Dockerfile"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "3790d386-be81-4dcf-9850-eaa7df6c10d9",
+					"ruleIndex": 12,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_postgresql_configuration.example.value' is 'OFF'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/sql.tf"
+								},
+								"region": {
+									"startLine": 80
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "819d50fd-1cdf-45c3-9936-be408aaad93e",
+					"ruleIndex": 13,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_security_center_subscription_pricing.pricing.tier' is 'Free'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/security_center.tf"
+								},
+								"region": {
+									"startLine": 2
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "70cdf849-b7d9-4569-b87d-5d82ffd44719",
+					"ruleIndex": 14,
+					"kind": "fail",
+					"message": {
+						"text": "Attribute 'master_auth' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "3e4d5ce6-3280-4027-8010-c26eeea1ec01",
+					"ruleIndex": 15,
+					"kind": "fail",
+					"message": {
+						"text": "google_compute_instance[server].metadata.block-project-ssh-keys is false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/instances.tf"
+								},
+								"region": {
+									"startLine": 20
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "b1d51728-7270-4991-ac2f-fc26e2695b38",
+					"ruleIndex": 16,
+					"kind": "fail",
+					"message": {
+						"text": "'google_compute_disk[unencrypted_disk].disk_encryption_key' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/instances.tf"
+								},
+								"region": {
+									"startLine": 26
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "568a4d22-3517-44a6-a7ad-6a7eed88722c",
+					"ruleIndex": 17,
+					"kind": "fail",
+					"message": {
+						"text": "'versioning' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/ec2.tf"
+								},
+								"region": {
+									"startLine": 171
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "568a4d22-3517-44a6-a7ad-6a7eed88722c",
+					"ruleIndex": 17,
+					"kind": "fail",
+					"message": {
+						"text": "'versioning' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "568a4d22-3517-44a6-a7ad-6a7eed88722c",
+					"ruleIndex": 17,
+					"kind": "fail",
+					"message": {
+						"text": "'versioning' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 25
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "b187edca-b81e-4fdc-aff4-aab57db45edb",
+					"ruleIndex": 18,
+					"kind": "fail",
+					"message": {
+						"text": "'authorized_network' address is not restricted: '0.0.0.0/0'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/big_data.tf"
+								},
+								"region": {
+									"startLine": 12
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "8a893e46-e267-485a-8690-51f39951de58",
+					"ruleIndex": 19,
+					"kind": "fail",
+					"message": {
+						"text": "'node_config.image_type' is not 'COS'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 29
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "4d080822-5ee2-49a4-8984-68f3d4c890fc",
+					"ruleIndex": 20,
+					"kind": "fail",
+					"message": {
+						"text": "'expiration_date' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/key_vault.tf"
+								},
+								"region": {
+									"startLine": 24
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "08bd0760-8752-44e1-9779-7bb369b2b4e4",
+					"ruleIndex": 21,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_db_instance.storage_encrypted' is false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/db-app.tf"
+								},
+								"region": {
+									"startLine": 18
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "cc997676-481b-4e93-aa81-d19f8c5e9b12",
+					"ruleIndex": 22,
+					"kind": "fail",
+					"message": {
+						"text": "One of 'aws_ebs_volume.encrypted' is 'false'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/ec2.tf"
+								},
+								"region": {
+									"startLine": 28
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "7081f85c-b94d-40fd-8b45-a4f1cac75e46",
+					"ruleIndex": 23,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_iam_access_key[user].user' is '${aws_iam_user.user.name}' for an active access key"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/iam.tf"
+								},
+								"region": {
+									"startLine": 13
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "24e16922-4330-4e9d-be8a-caa90299466a",
+					"ruleIndex": 24,
+					"kind": "fail",
+					"message": {
+						"text": "'encrypt_at_rest' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/es.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "575a2155-6af1-4026-b1af-d5bc8fe2a904",
+					"ruleIndex": 25,
+					"kind": "fail",
+					"message": {
+						"text": "'policy.Statement.Resource' equal '*'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/db-app.tf"
+								},
+								"region": {
+									"startLine": 156
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "575a2155-6af1-4026-b1af-d5bc8fe2a904",
+					"ruleIndex": 25,
+					"kind": "fail",
+					"message": {
+						"text": "'policy.Statement.Resource' equal '*'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/iam.tf"
+								},
+								"region": {
+									"startLine": 32
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c606ba1d-d736-43eb-ac24-e16108f3a9e0",
+					"ruleIndex": 26,
+					"kind": "fail",
+					"message": {
+						"text": "Attributes 'ip_allocation_policy' and 'networking_mode' are undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "0437633b-daa6-4bbc-8526-c0d2443b946e",
+					"ruleIndex": 27,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_postgresql_server.example.ssl_enforcement_enabled' is equal 'false'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/sql.tf"
+								},
+								"region": {
+									"startLine": 66
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "a6cd52a1-3056-4910-96a5-894de9f3f3b3",
+					"ruleIndex": 28,
+					"kind": "fail",
+					"message": {
+						"text": "'google_storage_bucket_iam_binding[allow_public_read].members' has 'allUsers'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gcs.tf"
+								},
+								"region": {
+									"startLine": 8
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "1baba08e-3c8a-4be7-95eb-dced5833de21",
+					"ruleIndex": 29,
+					"kind": "fail",
+					"message": {
+						"text": "Attribute 'master_auth' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6ccb85d7-0420-4907-9380-50313f80946b",
+					"ruleIndex": 30,
+					"kind": "fail",
+					"message": {
+						"text": "Attribute 'private_cluster_config' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "3cb4af0b-056d-4fb1-8b95-fdc4593625ff",
+					"ruleIndex": 31,
+					"kind": "fail",
+					"message": {
+						"text": "'google_compute_instance[server].service_account' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/instances.tf"
+								},
+								"region": {
+									"startLine": 3
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "4728cd65-a20c-49da-8b31-9c08b423e4db",
+					"ruleIndex": 32,
+					"kind": "fail",
+					"message": {
+						"text": "One of 'ingress.cidr_blocks' equal '0.0.0.0/0'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/ec2.tf"
+								},
+								"region": {
+									"startLine": 50
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "1dc73fb4-5b51-430c-8c5f-25dcf9090b02",
+					"ruleIndex": 33,
+					"kind": "fail",
+					"message": {
+						"text": "'backup_retention_period' is equal '0'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/db-app.tf"
+								},
+								"region": {
+									"startLine": 17
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+					"ruleIndex": 34,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_s3_bucket.server_side_encryption_configuration' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/ec2.tf"
+								},
+								"region": {
+									"startLine": 171
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+					"ruleIndex": 34,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_s3_bucket.server_side_encryption_configuration' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 55
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+					"ruleIndex": 34,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_s3_bucket.server_side_encryption_configuration' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+					"ruleIndex": 34,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_s3_bucket.server_side_encryption_configuration' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 25
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+					"ruleIndex": 34,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_s3_bucket.server_side_encryption_configuration' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 39
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "ffac8a12-322e-42c1-b9b9-81ff85c39ef7",
+					"ruleIndex": 35,
+					"kind": "fail",
+					"message": {
+						"text": "aws_security_group[web-node].ingress opens the http port"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/ec2.tf"
+								},
+								"region": {
+									"startLine": 50
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "cf3c7631-cd1e-42f3-8801-a561214a6e79",
+					"ruleIndex": 36,
+					"kind": "fail",
+					"message": {
+						"text": "settings.backup_configuration.enabled is false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/big_data.tf"
+								},
+								"region": {
+									"startLine": 16
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "e576ce44-dd03-4022-a8c0-3906acca2ab4",
+					"ruleIndex": 37,
+					"kind": "fail",
+					"message": {
+						"text": "'access.special_group' is equal 'allAuthenticatedUsers'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/big_data.tf"
+								},
+								"region": {
+									"startLine": 24
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "35113e6f-2c6b-414d-beec-7a9482d3b2d1",
+					"ruleIndex": 38,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_db_instance[default].publicly_accessible' is true"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/db-app.tf"
+								},
+								"region": {
+									"startLine": 21
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+					"ruleIndex": 39,
+					"kind": "fail",
+					"message": {
+						"text": "'mfa_delete' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 72
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+					"ruleIndex": 39,
+					"kind": "fail",
+					"message": {
+						"text": "'mfa_delete' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 44
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+					"ruleIndex": 39,
+					"kind": "fail",
+					"message": {
+						"text": "'mfa_delete' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 59
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "12944ec4-1fa0-47be-8b17-42a034f937c2",
+					"ruleIndex": 40,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_storage_account.example.enable_https_traffic_only' does not exist"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/storage.tf"
+								},
+								"region": {
+									"startLine": 13
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "d0b4d550-c001-46c3-bbdb-d5d75d33f05f",
+					"ruleIndex": 41,
+					"kind": "fail",
+					"message": {
+						"text": "google_compute_instance[server].metadata.enable-oslogin is false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/instances.tf"
+								},
+								"region": {
+									"startLine": 21
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c4dcdcdf-10dd-4bf4-b4a0-8f6239e6aaa0",
+					"ruleIndex": 42,
+					"kind": "fail",
+					"message": {
+						"text": "'google_compute_firewall[allow_all].allow.ports' includes SSH port 22"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/networks.tf"
+								},
+								"region": {
+									"startLine": 25
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "9db38e87-f6aa-4b5e-a1ec-7266df259409",
+					"ruleIndex": 43,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_security_center_contact.contact.alert_notifications' is false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/security_center.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "a99130ab-4c0e-43aa-97f8-78d4fcb30024",
+					"ruleIndex": 44,
+					"kind": "fail",
+					"message": {
+						"text": "azurerm_managed_disk[example].encryption_settings.enabled is false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/storage.tf"
+								},
+								"region": {
+									"startLine": 9
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "e7e961ac-d17e-4413-84bc-8a1fbe242944",
+					"ruleIndex": 45,
+					"kind": "fail",
+					"message": {
+						"text": "'versioning' it undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gcs.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "b90842e5-6779-44d4-9760-972f4c03ba1c",
+					"ruleIndex": 46,
+					"kind": "fail",
+					"message": {
+						"text": "azurerm_network_watcher_flow_log.enabled is false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/networking.tf"
+								},
+								"region": {
+									"startLine": 76
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "38c71c00-c177-4cd7-8d36-cd1007cdb190",
+					"ruleIndex": 47,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_monitor_diagnostic_setting' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/key_vault.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "97fa667a-d05b-4f16-9071-58b939f34751",
+					"ruleIndex": 48,
+					"kind": "fail",
+					"message": {
+						"text": "google_compute_instance[server].metadata.serial-port-enable is true"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/instances.tf"
+								},
+								"region": {
+									"startLine": 22
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "e6b4b943-6883-47a9-9739-7ada9568f8ca",
+					"ruleIndex": 49,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_ebs_snapshot.encrypted' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/ec2.tf"
+								},
+								"region": {
+									"startLine": 35
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "ad03cb46-f174-4674-bf8e-2880a7000edd",
+					"ruleIndex": 50,
+					"kind": "fail",
+					"message": {
+						"text": "server_side_encryption_configuration.rule.apply_server_side_encryption_by_default.kms_master_key_id is defined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 79
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "65905cec-d691-4320-b320-2000436cb696",
+					"ruleIndex": 51,
+					"kind": "fail",
+					"message": {
+						"text": "aws_security_group[web-node] SSH' (Port:22) is public"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/ec2.tf"
+								},
+								"region": {
+									"startLine": 60
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "88fd05e0-ac0e-43d2-ba6d-fc0ba60ae1a6",
+					"ruleIndex": 52,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_db_instance.iam_database_authentication_enabled' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/db-app.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "1402afd8-a95c-4e84-8b0b-6fb43758e6ce",
+					"ruleIndex": 53,
+					"kind": "fail",
+					"message": {
+						"text": "'environment.variables' contains access key"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/lambda.tf"
+								},
+								"region": {
+									"startLine": 22
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "02474449-71aa-40a1-87ae-e14497747b00",
+					"ruleIndex": 54,
+					"kind": "fail",
+					"message": {
+						"text": "'settings.ip_configuration.require_ssl' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/big_data.tf"
+								},
+								"region": {
+									"startLine": 8
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f7e296b0-6660-4bc5-8f87-22ac4a815edf",
+					"ruleIndex": 55,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_sql_server.example.extended_auditing_policy' does not exist"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/sql.tf"
+								},
+								"region": {
+									"startLine": 9
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "11e7550e-c4b6-472e-adff-c698f157cdd7",
+					"ruleIndex": 56,
+					"kind": "fail",
+					"message": {
+						"text": "Attribute 'network_policy' is undefined and Attribute 'addons_config' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "9192e0f9-eca5-4056-9282-ae2a736a4088",
+					"ruleIndex": 57,
+					"kind": "fail",
+					"message": {
+						"text": "Attribute 'pod_security_policy_config' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "4c7ebcb2-eae2-461e-bc83-456ee2d4f694",
+					"ruleIndex": 58,
+					"kind": "fail",
+					"message": {
+						"text": "Attribute 'logging_service' is 'none'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "a3a055d2-9a2e-4cc9-b9fb-12850a1a3a4b",
+					"ruleIndex": 59,
+					"kind": "fail",
+					"message": {
+						"text": "A 'azurerm_sql_active_directory_administrator' is not defined for 'azurerm_sql_server[example]'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/sql.tf"
+								},
+								"region": {
+									"startLine": 9
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "8b042c30-e441-453f-b162-7696982ebc58",
+					"ruleIndex": 60,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_postgresql_server.example.geo_redundant_backup_enabled' is false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/sql.tf"
+								},
+								"region": {
+									"startLine": 61
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "7750fcca-dd03-4d38-b663-4b70289bcfd4",
+					"ruleIndex": 61,
+					"kind": "fail",
+					"message": {
+						"text": "'retention_policy.days' is bigger than 90 [10])"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/networking.tf"
+								},
+								"region": {
+									"startLine": 83
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "7750fcca-dd03-4d38-b663-4b70289bcfd4",
+					"ruleIndex": 61,
+					"kind": "fail",
+					"message": {
+						"text": "'flow_log.retention_policy' is disabled)"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/networking.tf"
+								},
+								"region": {
+									"startLine": 82
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f5342045-b935-402d-adf1-8dbbd09c0eef",
+					"ruleIndex": 62,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_kubernetes_cluster[k8s_cluster].network_profile' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/aks.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "d6cabc3a-d57e-48c2-b341-bf3dd4f4a120",
+					"ruleIndex": 63,
+					"kind": "fail",
+					"message": {
+						"text": "'google_storage_bucket.logging' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gcs.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "bb0db090-5509-4853-a827-75ced0b3caa0",
+					"ruleIndex": 64,
+					"kind": "fail",
+					"message": {
+						"text": "google_storage_bucket[terragoat_website].uniform_bucket_level_access is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gcs.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f996f3cb-00fc-480c-8973-8ab04d44a8cc",
+					"ruleIndex": 65,
+					"kind": "fail",
+					"message": {
+						"text": "Aa12345678"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/sql.tf"
+								},
+								"region": {
+									"startLine": 15
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "98d59056-f745-4ef5-8613-32bca8d40b7e",
+					"ruleIndex": 66,
+					"kind": "fail",
+					"message": {
+						"text": "'storage_encrypted' is false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/neptune.tf"
+								},
+								"region": {
+									"startLine": 9
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "61c3cb8b-0715-47e4-b788-86dde40dd2db",
+					"ruleIndex": 67,
+					"kind": "fail",
+					"message": {
+						"text": "'azurerm_kubernetes_cluster[k8s_cluster].addon_profile.kube_dashboard.enabled' is true"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/aks.tf"
+								},
+								"region": {
+									"startLine": 19
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "bb2d6cbc-b3af-4da7-9b1c-d91652dd9ead",
+					"ruleIndex": 68,
+					"kind": "fail",
+					"message": {
+						"text": "'data.azurerm_key_vault' is not defined for 'azurerm_key_vault[example]'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/azure/key_vault.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "65c1bc7a-4835-4ac4-a2b6-13d310b0648d",
+					"ruleIndex": 69,
+					"kind": "fail",
+					"message": {
+						"text": "Attribute 'resource_labels' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/gke.tf"
+								},
+								"region": {
+									"startLine": 6
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "40430747-442d-450a-a34f-dc57149f4609",
+					"ruleIndex": 70,
+					"kind": "fail",
+					"message": {
+						"text": "'google_compute_subnetwork[public-subnetwork].log_config' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/networks.tf"
+								},
+								"region": {
+									"startLine": 7
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "678fd659-96f2-454a-a2a0-c2571f83a4a3",
+					"ruleIndex": 71,
+					"kind": "fail",
+					"message": {
+						"text": "'google_compute_firewall[allow_all].allow.ports' includes RDP port 3389"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/gcp/networks.tf"
+								},
+								"region": {
+									"startLine": 25
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "d7b9d850-3e06-4a75-852f-c46c2e92240b",
+					"ruleIndex": 72,
+					"kind": "fail",
+					"message": {
+						"text": "'user_data' contains access key"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/ec2.tf"
+								},
+								"region": {
+									"startLine": 9
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "38c5ee0d-7f22-4260-ab72-5073048df100",
+					"ruleIndex": 73,
+					"kind": "informational",
+					"message": {
+						"text": "'acl' is equal 'public-read'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 7
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+					"ruleIndex": 74,
+					"kind": "fail",
+					"message": {
+						"text": "'logging' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/ec2.tf"
+								},
+								"region": {
+									"startLine": 171
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+					"ruleIndex": 74,
+					"kind": "fail",
+					"message": {
+						"text": "'logging' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 69
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+					"ruleIndex": 74,
+					"kind": "fail",
+					"message": {
+						"text": "'logging' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 62
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+					"ruleIndex": 74,
+					"kind": "fail",
+					"message": {
+						"text": "'logging' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 62
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+					"ruleIndex": 74,
+					"kind": "fail",
+					"message": {
+						"text": "'logging' is missing"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "terraform/aws/s3.tf"
+								},
+								"region": {
+									"startLine": 62
+								}
+							}
+						}
+					]
+				}
+			],
+			"taxonomies": [
+				{
+					"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+					"name": "Categories",
+					"fullDescription": {
+						"text": "This taxonomy contains the types an issue can assume"
+					},
+					"shortDescription": {
+						"text": "Vulnerabilities categories"
+					},
+					"taxa": [
+						{
+							"id": "CAT000",
+							"name": "Undefined Category",
+							"shortDescription": {
+								"text": "Category is not defined"
+							},
+							"fullDescription": {
+								"text": "Category is not defined"
+							}
+						},
+						{
+							"id": "CAT004",
+							"name": "Best Practices",
+							"shortDescription": {
+								"text": "Metadata management"
+							},
+							"fullDescription": {
+								"text": "Metadata management"
+							}
+						},
+						{
+							"id": "CAT005",
+							"name": "Build Process",
+							"shortDescription": {
+								"text": "Insecure configurations when building/deploying Docker images"
+							},
+							"fullDescription": {
+								"text": "Insecure configurations when building/deploying Docker images"
+							}
+						},
+						{
+							"id": "CAT006",
+							"name": "Encryption",
+							"shortDescription": {
+								"text": "Data Security and Encryption configuration"
+							},
+							"fullDescription": {
+								"text": "Data Security and Encryption configuration"
+							}
+						},
+						{
+							"id": "CAT008",
+							"name": "Insecure Defaults",
+							"shortDescription": {
+								"text": "Configurations that are insecure by default"
+							},
+							"fullDescription": {
+								"text": "Configurations that are insecure by default"
+							}
+						},
+						{
+							"id": "CAT009",
+							"name": "Networking and Firewall",
+							"shortDescription": {
+								"text": "Network port exposure and firewall configuration"
+							},
+							"fullDescription": {
+								"text": "Network port exposure and firewall configuration"
+							}
+						},
+						{
+							"id": "CAT010",
+							"name": "Observability",
+							"shortDescription": {
+								"text": "Logging and Monitoring"
+							},
+							"fullDescription": {
+								"text": "Logging and Monitoring"
+							}
+						},
+						{
+							"id": "CAT011",
+							"name": "Resource Management",
+							"shortDescription": {
+								"text": "Resource and privilege limit configuration"
+							},
+							"fullDescription": {
+								"text": "Resource and privilege limit configuration"
+							}
+						},
+						{
+							"id": "CAT001",
+							"name": "Access Control",
+							"shortDescription": {
+								"text": "Service permission and identity management"
+							},
+							"fullDescription": {
+								"text": "Service permission and identity management"
+							}
+						},
+						{
+							"id": "CAT002",
+							"name": "Availability",
+							"shortDescription": {
+								"text": "Reliability and Scalability"
+							},
+							"fullDescription": {
+								"text": "Reliability and Scalability"
+							}
+						},
+						{
+							"id": "CAT003",
+							"name": "Backup",
+							"shortDescription": {
+								"text": "Survivability and Recovery"
+							},
+							"fullDescription": {
+								"text": "Survivability and Recovery"
+							}
+						},
+						{
+							"id": "CAT007",
+							"name": "Insecure Configurations",
+							"shortDescription": {
+								"text": "Configurations which expose the application unnecessarily"
+							},
+							"fullDescription": {
+								"text": "Configurations which expose the application unnecessarily"
+							}
+						},
+						{
+							"id": "CAT012",
+							"name": "Secret Management",
+							"shortDescription": {
+								"text": "Secret and Key management"
+							},
+							"fullDescription": {
+								"text": "Secret and Key management"
+							}
+						},
+						{
+							"id": "CAT013",
+							"name": "Supply-Chain",
+							"shortDescription": {
+								"text": "Dependency version management"
+							},
+							"fullDescription": {
+								"text": "Dependency version management"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
