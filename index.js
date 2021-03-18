@@ -48,7 +48,7 @@ async function run(){
 		core.setOutput("mdFile", 'report.md');
 
 		//Comment on PR
-		const new_comment = awaitoctokit.issues.createComment({
+		const new_comment = await octokit.issues.createComment({
 			...context.repo,
 			issue_number: pull_request_number,
 			body: body
