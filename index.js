@@ -7,6 +7,8 @@ async function run(){
 
 	try {
         const context = github.context;
+        const github_token = core.getInput('token');
+        
 		if (context.payload.pull_request == null) {
 		core.setFailed('No pull request found.');
 		return;
@@ -46,7 +48,6 @@ async function run(){
 		core.setOutput("mdFile", 'report.md');
 
 		//Comment on PR
-		const github_token = core.getInput('token');
 		const new_comment = awaitoctokit.issues.createComment({
 			...context.repo,
 			issue_number: pull_request_number,
