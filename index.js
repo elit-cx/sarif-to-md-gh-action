@@ -8,7 +8,7 @@ async function run(){
 	try {
         const context = github.context;
         const github_token = core.getInput('token');
-        
+
 		if (context.payload.pull_request == null) {
 		core.setFailed('No pull request found.');
 		return;
@@ -29,14 +29,14 @@ async function run(){
 		repo: repo,
 		pull_number: pull_request_number
 		});
-		const branch = response.data.head.base_ref
+		const branch = response.data.head.ref
 		
 		console.log(`repo details ${owner}, ${repo}, ${branch}`)
 		const results = sariftToMd.sarifToMarkdown({
 		owner: owner,
 		repo: repo,
 		branch: branch,
-		sourceRoot: rawdata
+		sourceRoot: ""
 		})(jsonSarif);
 		
 		const resultsHasMessage = results.filter(result => result.hasMessages);
