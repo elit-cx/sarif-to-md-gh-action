@@ -4,20 +4,35 @@ const fs = require('fs');
 const sariftToMd = require('@security-alert/sarif-to-markdown')
 
 try {
+  if (context.payload.pull_request == null) {
+      core.setFailed('No pull request found.');
+      return;
+    }
+
   const sarifReportpath = core.getInput('sarifReport');
   console.log(`report file name ${sarifReportpath}`);
   let rawdata = fs.readFileSync(sarifReportpath);
   let jsonSarif = JSON.parse(rawdata)
+
   const context = github.context;
-  owner = context.repo.owner 
-  repo = context.repo.repo 
-  branch = ""
-  console.log(`repo details ${context.repo.owner}, ${context.repo.repo}, ${context.repo.branch}`)
+  const octokit = new github.getOctokit(github_token)
+  const owner = context.repo.owner 
+  const repo = context.repo.repo 
+  const pull_request_number = context.payload.pull_request.number;
+
+  const response = await octokit.pulls.get({
+    owner: owner,
+    repo: repo,
+    pull_number: pull_request_number
+  });
+  const branch = response.data.head.base_ref
+
+  console.log(`repo details ${owner}, ${repo}, ${branch}`)
   const results = sariftToMd.sarifToMarkdown({
     owner: owner,
     repo: repo,
     branch: branch,
-    sourceRoot: ""
+    sourceRoot: rawdata
 })(jsonSarif);
 
 const resultsHasMessage = results.filter(result => result.hasMessages);
@@ -31,13 +46,9 @@ core.setOutput("mdFile", 'report.md');
 //Comment on PR
 const github_token = core.getInput('token');
 
-if (context.payload.pull_request == null) {
-    core.setFailed('No pull request found.');
-    return;
-}
-const pull_request_number = context.payload.pull_request.number;
 
-const octokit = new github.getOctokit(github_token)
+
+
 const new_comment = octokit.issues.createComment({
     ...context.repo,
     issue_number: pull_request_number,
